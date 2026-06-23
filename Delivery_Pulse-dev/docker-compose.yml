@@ -1,0 +1,42 @@
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  backend:
+    image: node:22-alpine
+    container_name: mern_backend
+    env_file:
+    - ./.env.docker
+    working_dir: /app
+    volumes:
+      - ./backend:/app
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/dsr_data
+      - GEMINI_API_KEY=AIzaSyAT4RSpAacwG_I1xumOlOoqggo0tUnkmnU
+    command: sh -c "npm install && node src/server.js"
+    depends_on:
+      - mongodb
+
+  frontend:
+    image: node:22-alpine
+    container_name: mern_frontend
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "5173:5173"
+    command: sh -c "npm install && npm run dev -- --host"
+    stdin_open: true
+    tty: true
+    depends_on:
+      - backend
+
+volumes:
+  mongo_data:

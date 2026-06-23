@@ -1,0 +1,47 @@
+{
+  "reportType": "daily",
+  "reportPeriod": "2025-01-01",
+  "projectName": "string",
+  "executiveSummary": "string",
+  "overallStatus": "on-track",
+  "keyAchievements": [
+    {
+      "task": "string",
+      "completedBy": "string"
+    }
+  ],
+  "workInProgress": [
+    {
+      "task": "string",
+      "assignedTo": "string",
+      "expectedCompletion": "string"
+    }
+  ],
+  "blockersAndRisks": [
+    {
+      "description": "string",
+      "isUnresolved": false,
+      "severity": "low",
+      "affectedEmployees": ["string"]
+    }
+  ],
+  "teamContributions": [
+    {
+      "name": "string",
+      "designation": "string",
+      "tasksCompleted": ["string"],
+      "tasksPlanned": ["string"]
+    }
+  ],
+  "recommendations": [
+    {
+      "suggestion": "string",
+      "priority": "high"
+    }
+  ],
+  "overallHealthScore": 8
+
+
+
+  
+}
